@@ -89,7 +89,8 @@ void main(String[] args) {
 
     System.out.println();
     System.out.println(bogie);
+    System.out.println();
 
-    System.out.println("");
+    System.out.println("UC4 ordered consist operations completed");
 
 }
