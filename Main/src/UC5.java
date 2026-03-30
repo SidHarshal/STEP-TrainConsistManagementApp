@@ -81,7 +81,7 @@ void main(String[] args) {
 //    trainConsist.removeLast();
 //    System.out.println(trainConsist);
 //    System.out.println();
-//    HashSet<String> bogie = new HashSet<>();
+//    H ashSet<String> bogie = new HashSet<>();
 //
 //
 //    System.out.println("Enger Bogie IDs--");
@@ -132,7 +132,7 @@ void main(String[] args) {
 
     }
     System.out.println();
-    System.out.println("Bogie Capacity Details:");
+    System.out.println("Bogie Capacity Details: ");
     for (Map.Entry<String, Integer> entry : capacity.entrySet()) {
         System.out.println(entry.getKey() + " -> " + entry.getValue());
     }
