@@ -1,3 +1,6 @@
+import java.util.*;
+
+public class UC5{
 
 void main(String[] args) {
     Scanner sc = new Scanner(System.in);
@@ -8,7 +11,7 @@ void main(String[] args) {
     System.out.println();
 
     System.out.println("====================================");
-    System.out.println("    UC5 - Preserve Insertion Order of Bogies");
+    System.out.println("    UC6 - Map Bogie to Capacity (HashMap)");
     System.out.println("====================================");
 
 //UC2
@@ -40,7 +43,6 @@ void main(String[] args) {
 //
 //    System.out.println("Checking if 'Sleeper' exists");
 //    System.out.println("Contains Sleeper?" + trainConsist.contains("Sleeper"));
-
 
 
 //UC3
@@ -96,15 +98,43 @@ void main(String[] args) {
 //
 //    System.out.println("UC4 ordered consist operations completed");
 
-    Set<String> formation = new LinkedHashSet<>();
 
-    System.out.println("Please enter the name of the bogies you want to add\n(To Exit you can type 'Exit'): ");
-    while(true){
-        String name = sc.nextLine();
-        if(name.equalsIgnoreCase("Exit")){break;}
-        formation.add(name);
+    //UC5
+//    Set<String> formation = new LinkedHashSet<>();
+//
+//    System.out.println("Please enter the name of the bogies you want to add\n(To Exit you can type 'Exit'): ");
+//    while(true){
+//        String name = sc.nextLine();
+//        if(name.equalsIgnoreCase("Exit")){break;}
+//        formation.add(name);
+//    }
+//    System.out.println();
+//    System.out.println("Final Train Formation:");
+//    System.out.println(formation);
+
+    //UC6
+    Map<String, Integer> capacity = new LinkedHashMap<>();
+
+    System.out.println("Enter bogie-capacity and Enter 'Exit' to exit entering--");
+    while (true) {
+        System.out.println("Enter bogie:");
+        String key = sc.nextLine();
+        if (key.equalsIgnoreCase("Exit")) {
+            break;
+        }
+        System.out.println("Enter capacity");
+        int value = sc.nextInt();
+        sc.nextLine();
+        if (key.equalsIgnoreCase("Exit")) {
+            break;
+        }
+        capacity.put(key, value);
+
     }
     System.out.println();
-    System.out.println("Final Train Formation:");
-    System.out.println(formation);
+    System.out.println("Bogie Capacity Details:");
+    for (Map.Entry<String, Integer> entry : capacity.entrySet()) {
+        System.out.println(entry.getKey() + " -> " + entry.getValue());
+    }
+}
 }
