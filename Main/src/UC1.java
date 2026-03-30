@@ -1,5 +1,5 @@
 
-void main() {
+void main(String[] args) {
 
     System.out.println("====================================");
     System.out.println("    Train Consist Management App");
