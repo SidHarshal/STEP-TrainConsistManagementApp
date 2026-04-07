@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class UC10 {
+public class UC11 {
     static class Bogie {
         String name;
         int capacity;
@@ -23,7 +23,7 @@ public class UC10 {
         System.out.println();
 
         System.out.println("====================================");
-        System.out.println("    UC10 - Count Total Seats in Train");
+        System.out.println("    UC11 - Validate Train ID and Cargo Code");
         System.out.println("====================================");
 
         // UC2
@@ -231,27 +231,64 @@ public class UC10 {
 
         // UC10 - Count Total Seats in Train
 
-    List<Bogie> bogies = new ArrayList<>();
+    // List<Bogie> bogies = new ArrayList<>();
 
-    bogies.add(new Bogie("Sleeper", 72));
-    bogies.add(new Bogie("AC Chair", 56));
-    bogies.add(new Bogie("First Class", 24));
-    bogies.add(new Bogie("Sleeper", 70));
+    // bogies.add(new Bogie("Sleeper", 72));
+    // bogies.add(new Bogie("AC Chair", 56));
+    // bogies.add(new Bogie("First Class", 24));
+    // bogies.add(new Bogie("Sleeper", 70));
 
-    System.out.println("\nBogies in Train:");
-    for (Bogie b : bogies) {
-        System.out.println(b.name + " -> " + b.capacity);
-    }
+    // System.out.println("\nBogies in Train:");
+    // for (Bogie b : bogies) {
+    //     System.out.println(b.name + " -> " + b.capacity);
+    // }
 
-    // ----- AGGREGATE USING STREAM (map + reduce) -----
+    // // ----- AGGREGATE USING STREAM (map + reduce) -----
 
-    int totalCapacity = bogies.stream()
-            .map(b -> b.capacity)          // extract capacity
-            .reduce(0, Integer::sum);      // sum all values
+    // int totalCapacity = bogies.stream()
+    //         .map(b -> b.capacity)          // extract capacity
+    //         .reduce(0, Integer::sum);      // sum all values
 
-    System.out.println("\nTotal Seating Capacity of Train: " + totalCapacity);
+    // System.out.println("\nTotal Seating Capacity of Train: " + totalCapacity);
+
+    // System.out.println();
+    // System.out.println("UC10 aggregation completed...");
+
+    // UC11 - Validate Train ID and Cargo Code
+
+    // Scanner sc = new Scanner(System.in);
+
+    // Accept input
+    System.out.print("Enter Train ID (Format: TR-1234): ");
+    String trainId = sc.nextLine();
+
+    System.out.print("Enter Cargo Code (Format: FR-AB12): ");
+    String cargoCode = sc.nextLine();
+
+    // ----- REGEX VALIDATION -----
+
+    // Train ID: TR-1234
+    boolean isTrainValid = trainId.matches("TR-\\d{4}");
+
+    // Cargo Code: FR-AB12
+    boolean isCargoValid = cargoCode.matches("FR-[A-Z]{2}\\d{2}");
 
     System.out.println();
-    System.out.println("UC10 aggregation completed...");
+
+    // Display results
+    if (isTrainValid) {
+        System.out.println("Train ID is VALID");
+    } else {
+        System.out.println("Train ID is INVALID");
+    }
+
+    if (isCargoValid) {
+        System.out.println("Cargo Code is VALID");
+    } else {
+        System.out.println("Cargo Code is INVALID");
+    }
+
+    System.out.println();
+    System.out.println("UC11 validation completed...");
     }
 }
