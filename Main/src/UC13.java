@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class UC12 {
+public class UC13 {
     static class Bogie {
         String name;
         int capacity;
@@ -33,7 +33,7 @@ public class UC12 {
         System.out.println();
 
         System.out.println("====================================");
-        System.out.println("    UC12 - Safet Compliance Check for Goods Bogies");
+        System.out.println("    UC13- Performance Comparison (Loops vs Streams)");
         System.out.println("====================================");
 
         // UC2
@@ -308,39 +308,86 @@ public class UC12 {
 
    
 
-    System.out.println("====================================");
-    System.out.println(" UC12 - Safety Compliance Check for Goods Bogies ");
-    System.out.println("====================================\n");
+    // System.out.println("====================================");
+    // System.out.println(" UC12 - Safety Compliance Check for Goods Bogies ");
+    // System.out.println("====================================\n");
 
-    // Create goods bogie list
-    List<GoodsBogie> goodsBogies = new ArrayList<>();
+    // // Create goods bogie list
+    // List<GoodsBogie> goodsBogies = new ArrayList<>();
 
-    goodsBogies.add(new GoodsBogie("Hazardous", "Chemicals"));
-    goodsBogies.add(new GoodsBogie("General", "Food"));
-    goodsBogies.add(new GoodsBogie("Hazardous", "Fuel"));
+    // goodsBogies.add(new GoodsBogie("Hazardous", "Chemicals"));
+    // goodsBogies.add(new GoodsBogie("General", "Food"));
+    // goodsBogies.add(new GoodsBogie("Hazardous", "Fuel"));
 
-    // Display bogies
-    System.out.println("Goods Bogies:");
-    for (GoodsBogie g : goodsBogies) {
-        System.out.println(g.type + " -> " + g.cargo);
+    // // Display bogies
+    // System.out.println("Goods Bogies:");
+    // for (GoodsBogie g : goodsBogies) {
+    //     System.out.println(g.type + " -> " + g.cargo);
+    // }
+
+    // // ----- SAFETY CHECK USING STREAM -----
+
+    // // Rule: Hazardous bogies should NOT carry "Food"
+    // boolean isSafe = goodsBogies.stream()
+    //         .allMatch(g -> !(g.type.equalsIgnoreCase("Hazardous") 
+    //                     && g.cargo.equalsIgnoreCase("Food")));
+
+    // System.out.println();
+
+    // if (isSafe) {
+    //     System.out.println("All goods bogies are SAFE");
+    // } else {
+    //     System.out.println("Safety violation detected!");
+    // }
+
+    // System.out.println();
+    // System.out.println("UC12 safety compliance completed...");
+
+
+
+    // ================= UC13 =================
+// Performance Comparison (Loops vs Streams)
+
+
+    // Create large test dataset
+    List<Bogie> bogies = new ArrayList<>();
+
+    for (int i = 1; i <= 100000; i++) {
+        bogies.add(new Bogie("Type" + i, i));
     }
 
-    // ----- SAFETY CHECK USING STREAM -----
+    // ----- LOOP BASED FILTER -----
 
-    // Rule: Hazardous bogies should NOT carry "Food"
-    boolean isSafe = goodsBogies.stream()
-            .allMatch(g -> !(g.type.equalsIgnoreCase("Hazardous") 
-                        && g.cargo.equalsIgnoreCase("Food")));
+    long startLoop = System.nanoTime();
 
-    System.out.println();
-
-    if (isSafe) {
-        System.out.println("All goods bogies are SAFE");
-    } else {
-        System.out.println("Safety violation detected!");
+    List<Bogie> loopResult = new ArrayList<>();
+    for (Bogie b : bogies) {
+        if (b.capacity > 50000) {
+            loopResult.add(b);
+        }
     }
 
+    long endLoop = System.nanoTime();
+    long loopTime = endLoop - startLoop;
+
+    // ----- STREAM BASED FILTER -----
+
+    long startStream = System.nanoTime();
+
+    List<Bogie> streamResult = bogies.stream()
+            .filter(b -> b.capacity > 50000)
+            .collect(Collectors.toList());
+
+    long endStream = System.nanoTime();
+    long streamTime = endStream - startStream;
+
+    // ----- DISPLAY RESULTS -----
+
+    System.out.println("Loop Execution Time: " + loopTime + " ns");
+    System.out.println("Stream Execution Time: " + streamTime + " ns");
+
     System.out.println();
-    System.out.println("UC12 safety compliance completed...");
+    System.out.println("UC13 performance comparison completed...");
+
     }
 }
