@@ -23,7 +23,7 @@ public class UC8 {
         System.out.println();
 
         System.out.println("====================================");
-        System.out.println("    UC7 - Sort Bogies by Capacity (Comparator)");
+        System.out.println("    UC8 - Sort Bogies by Capacity (Comparator)");
         System.out.println("====================================");
 
         // UC2
@@ -202,5 +202,6 @@ public class UC8 {
             System.out.println(b.name + " -> " + b.capacity);
         }
 
+        System.out.println("UC8 filtering completed...");
     }
 }
