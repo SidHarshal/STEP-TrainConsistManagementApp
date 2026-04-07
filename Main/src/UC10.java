@@ -1,8 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-
-public class UC8 {
+public class UC10 {
     static class Bogie {
         String name;
         int capacity;
@@ -11,9 +10,10 @@ public class UC8 {
             this.name = name;
             this.capacity = capacity;
         }
-    
     }
 
+
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("====================================");
@@ -23,7 +23,7 @@ public class UC8 {
         System.out.println();
 
         System.out.println("====================================");
-        System.out.println("    UC8 - Sort Bogies by Capacity (Comparator)");
+        System.out.println("    UC10 - Count Total Seats in Train");
         System.out.println("====================================");
 
         // UC2
@@ -125,83 +125,133 @@ public class UC8 {
         // UC6
         // Map<String, Integer> capacity = new LinkedHashMap<>();
 
-        // System.out.println("Enter bogie-capacity and Enter 'Exit' to exit entering--");
+        // System.out.println("Enter bogie-capacity and Enter 'Exit' to exit
+        // entering--");
+        // 
         // while (true) {
-        //     System.out.println("Enter bogie:");
-        //     String key = sc.nextLine();
-        //     if (key.equalsIgnoreCase("Exit")) {
-        //         break;
-        //     }
-        //     System.out.println("Enter capacity");
-        //     int value = sc.nextInt();
-        //     sc.nextLine();
-        //     if (key.equalsIgnoreCase("Exit")) {
-        //         break;
-        //     }
-        //     capacity.put(key, value);
+        // em.out.println("Enter bogie:");
+        // ng key = sc.nextLine();
+        // key.equalsIgnoreCase("Exit")) {
+        // 
+        // 
+        // em.out.println("Enter capacity");
+        // value = sc.nextInt();
+        // extLine();
+        // key.equalsIgnoreCase("Exit")) {
+        // 
+        // 
+        // city.put(key, value);
 
         // }
         // System.out.println();
         // System.out.println("Bogie Capacity Details: ");
         // for (Map.Entry<String, Integer> entry : capacity.entrySet()) {
-        //     System.out.println(entry.getKey() + " -> " + entry.getValue());
+        // em.out.println(entry.getKey() + " -> " + entry.getValue());
         // }
 
+         
+        // List<Bogie> bogies = new ArrayList<>();
 
-        //UC7 & UC8
+        // System.out.println("Enter bogie name and capacity (Enter 'Exit' to stop):");
+        // while (true) {
+        //     System.out.println("Bogie Name:");
+        //     String name = sc.nextLine();
+        //     if (name.equalsIgnoreCase("Exit")) {
+        //         break;
+        //     }
+        //     System.out.println("Bogie Capacity:");
+        //     int capacity = sc.nextInt();
+        //     sc.nextLine(); // Consume newline
+        //     bogies.add(new Bogie(name, capacity));
+        // }
 
-        List<Bogie> bogies = new ArrayList<>();
+        // System.out.println
 
-        System.out.println("Enter bogie name and capacity (Enter 'Exit' to stop):");
-        while (true) {
-            System.out.println("Bogie Name:");
-            String name = sc.nextLine();
-            if (name.equalsIgnoreCase("Exit")) {
-                break;
-            }
-            System.out.println("Bogie Capacity:");
-            int capacity = sc.nextInt();
-            sc.nextLine(); // Consume newline
-            bogies.add(new Bogie(name, capacity));
-        }
 
-        System.out.println();
-        
-
-        // System.out.println("Before Sorting:");
-        // // System.out.println(bogies);
         // for (Bogie b : bogies) {
-        //     System.out.println(b.name + " -> " + b.capacity);
+        // System.out.println(b.name + " -> " + b.capacity);
         // }
-
+ 
         // System.out.println();
 
         // System.out.println("After Sorting by Capacity:");
         // bogies.sort((a, b) -> a.capacity - b.capacity);
         // for (Bogie b : bogies) {
-        //     System.out.println(b.name + " -> " + b.capacity);
+        // System.out.println(b.name + " -> " + b.capacity);
+        // }
+ 
+        // System.out.println();
+        // System.out.println("UC7 sorting completed...");
+
+        // System.out.println("All Bogies");
+
         // }
 
         // System.out.println();
-        // System.out.println("UC7 sorting completed...");
+
+        // System.out.println("Filtered Bogeies (Capacity > 60):");
+        // List<Bogie> filteredBogies = bogies.stream()
+        //         .filter(b -> b.capacity > 60)
+        //         .collect(Collectors.toList());
+
+        // for (Bogie b : filteredBogies) {
+        //     System.out.println(b.name + " -> " + b.capacity);
+        // }
+
+        // System.out.println("UC8 filtering completed...");
+
+        // List<Bogie> bogies = new ArrayList<>();
+
+        // bogies.add(new Bogie("Sleeper", 72));
+        // bogies.add(new Bogie("AC Chair", 56));
+        // bogies.add(new Bogie("First Class", 24));
+        // bogies.add(new Bogie("Sleeper", 70));
+        // bogies.add(new Bogie("AC Chair", 60));
+
+        // System.out.println("\nAll Bogies:");
+        // for (Bogie b : bogies) {
+        //     System.out.println(b.name + " -> " + b.capacity);
+        // }
+
+        // Map<String, List<Bogie>> groupedBogies = bogies.stream()
+        //         .collect(Collectors.groupingBy(b -> b.name));
+
+        // System.out.println("\nGrouped Bogies:\n\n");
+        // for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
+        //     System.out.println("Bogie Type: " + entry.getKey());
+        //     for (Bogie b : entry.getValue()) {
+        //         System.out.println("  " + b.name + " -> " + b.capacity);
+        //     }
+        //     System.out.println();
+        // }
         
+        // System.out.println();
+        // System.out.println("UC9 grouping completed...");
 
-        System.out.println("All Bogies");
-        for (Bogie b : bogies) {
-            System.out.println(b.name + " -> " + b.capacity);
-        }
 
-        System.out.println();
+        // UC10 - Count Total Seats in Train
 
-        System.out.println("Filtered Bogeies (Capacity > 60):");
-        List<Bogie> filteredBogies = bogies.stream()
-                .filter(b -> b.capacity > 60)
-                .collect(Collectors.toList());
+    List<Bogie> bogies = new ArrayList<>();
 
-        for (Bogie b : filteredBogies) {
-            System.out.println(b.name + " -> " + b.capacity);
-        }
+    bogies.add(new Bogie("Sleeper", 72));
+    bogies.add(new Bogie("AC Chair", 56));
+    bogies.add(new Bogie("First Class", 24));
+    bogies.add(new Bogie("Sleeper", 70));
 
-        System.out.println("UC8 filtering completed...");
+    System.out.println("\nBogies in Train:");
+    for (Bogie b : bogies) {
+        System.out.println(b.name + " -> " + b.capacity);
+    }
+
+    // ----- AGGREGATE USING STREAM (map + reduce) -----
+
+    int totalCapacity = bogies.stream()
+            .map(b -> b.capacity)          // extract capacity
+            .reduce(0, Integer::sum);      // sum all values
+
+    System.out.println("\nTotal Seating Capacity of Train: " + totalCapacity);
+
+    System.out.println();
+    System.out.println("UC10 aggregation completed...");
     }
 }
