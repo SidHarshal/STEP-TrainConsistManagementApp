@@ -1,7 +1,8 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 
-public class UC7 {
+public class UC8 {
     static class Bogie {
         String name;
         int capacity;
@@ -22,7 +23,7 @@ public class UC7 {
         System.out.println();
 
         System.out.println("====================================");
-        System.out.println("    UC7 - Sort Bogies by Capacity (Comparator)");
+        System.out.println("    UC8 - Sort Bogies by Capacity (Comparator)");
         System.out.println("====================================");
 
         // UC2
@@ -147,7 +148,7 @@ public class UC7 {
         // }
 
 
-        //UC7
+        //UC7 & UC8
 
         List<Bogie> bogies = new ArrayList<>();
 
@@ -167,23 +168,40 @@ public class UC7 {
         System.out.println();
         
 
-        System.out.println("Before Sorting:");
-        // System.out.println(bogies);
-        for (Bogie b : bogies) {
-            System.out.println(b.name + " -> " + b.capacity);
-        }
+        // System.out.println("Before Sorting:");
+        // // System.out.println(bogies);
+        // for (Bogie b : bogies) {
+        //     System.out.println(b.name + " -> " + b.capacity);
+        // }
 
-        System.out.println();
+        // System.out.println();
 
-        System.out.println("After Sorting by Capacity:");
-        bogies.sort((a, b) -> a.capacity - b.capacity);
-        for (Bogie b : bogies) {
-            System.out.println(b.name + " -> " + b.capacity);
-        }
+        // System.out.println("After Sorting by Capacity:");
+        // bogies.sort((a, b) -> a.capacity - b.capacity);
+        // for (Bogie b : bogies) {
+        //     System.out.println(b.name + " -> " + b.capacity);
+        // }
 
-        System.out.println();
-        System.out.println("UC7 sorting completed...");
+        // System.out.println();
+        // System.out.println("UC7 sorting completed...");
         
 
+        System.out.println("All Bogies");
+        for (Bogie b : bogies) {
+            System.out.println(b.name + " -> " + b.capacity);
+        }
+
+        System.out.println();
+
+        System.out.println("Filtered Bogeies (Capacity > 60):");
+        List<Bogie> filteredBogies = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
+
+        for (Bogie b : filteredBogies) {
+            System.out.println(b.name + " -> " + b.capacity);
+        }
+
+        System.out.println("UC8 filtering completed...");
     }
 }
