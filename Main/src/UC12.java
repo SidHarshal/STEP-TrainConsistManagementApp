@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class UC11 {
+public class UC12 {
     static class Bogie {
         String name;
         int capacity;
@@ -9,6 +9,16 @@ public class UC11 {
         Bogie(String name, int capacity) {
             this.name = name;
             this.capacity = capacity;
+        }
+    }
+
+     static class GoodsBogie {
+        String type;
+        String cargo;
+
+        GoodsBogie(String type, String cargo) {
+            this.type = type;
+            this.cargo = cargo;
         }
     }
 
@@ -23,7 +33,7 @@ public class UC11 {
         System.out.println();
 
         System.out.println("====================================");
-        System.out.println("    UC11 - Validate Train ID and Cargo Code");
+        System.out.println("    UC12 - Safet Compliance Check for Goods Bogies");
         System.out.println("====================================");
 
         // UC2
@@ -254,41 +264,83 @@ public class UC11 {
     // System.out.println();
     // System.out.println("UC10 aggregation completed...");
 
-    // UC11 - Validate Train ID and Cargo Code
+        
+    
+            // UC11 - Validate Train ID and Cargo Code
 
     // Scanner sc = new Scanner(System.in);
 
     // Accept input
-    System.out.print("Enter Train ID (Format: TR-1234): ");
-    String trainId = sc.nextLine();
+    // System.out.print("Enter Train ID (Format: TR-1234): ");
+    // String trainId = sc.nextLine();
 
-    System.out.print("Enter Cargo Code (Format: FR-AB12): ");
-    String cargoCode = sc.nextLine();
+    // System.out.print("Enter Cargo Code (Format: FR-AB12): ");
+    // String cargoCode = sc.nextLine();
 
-    // ----- REGEX VALIDATION -----
+    // // ----- REGEX VALIDATION -----
 
-    // Train ID: TR-1234
-    boolean isTrainValid = trainId.matches("TR-\\d{4}");
+    // // Train ID: TR-1234
+    // boolean isTrainValid = trainId.matches("TR-\\d{4}");
 
-    // Cargo Code: FR-AB12
-    boolean isCargoValid = cargoCode.matches("FR-[A-Z]{2}\\d{2}");
+    // // Cargo Code: FR-AB12
+    // boolean isCargoValid = cargoCode.matches("FR-[A-Z]{2}\\d{2}");
+
+    // System.out.println();
+
+    // // Display results
+    // if (isTrainValid) {
+    //     System.out.println("Train ID is VALID");
+    // } else {
+    //     System.out.println("Train ID is INVALID");
+    // }
+
+    // if (isCargoValid) {
+    //     System.out.println("Cargo Code is VALID");
+    // } else {
+    //     System.out.println("Cargo Code is INVALID");
+    // }
+
+    // System.out.println();
+    // System.out.println("UC11 validation completed...");
+
+        // ================= UC12 =================
+    // Safety Compliance Check for Goods Bogies
+
+   
+
+    System.out.println("====================================");
+    System.out.println(" UC12 - Safety Compliance Check for Goods Bogies ");
+    System.out.println("====================================\n");
+
+    // Create goods bogie list
+    List<GoodsBogie> goodsBogies = new ArrayList<>();
+
+    goodsBogies.add(new GoodsBogie("Hazardous", "Chemicals"));
+    goodsBogies.add(new GoodsBogie("General", "Food"));
+    goodsBogies.add(new GoodsBogie("Hazardous", "Fuel"));
+
+    // Display bogies
+    System.out.println("Goods Bogies:");
+    for (GoodsBogie g : goodsBogies) {
+        System.out.println(g.type + " -> " + g.cargo);
+    }
+
+    // ----- SAFETY CHECK USING STREAM -----
+
+    // Rule: Hazardous bogies should NOT carry "Food"
+    boolean isSafe = goodsBogies.stream()
+            .allMatch(g -> !(g.type.equalsIgnoreCase("Hazardous") 
+                        && g.cargo.equalsIgnoreCase("Food")));
 
     System.out.println();
 
-    // Display results
-    if (isTrainValid) {
-        System.out.println("Train ID is VALID");
+    if (isSafe) {
+        System.out.println("All goods bogies are SAFE");
     } else {
-        System.out.println("Train ID is INVALID");
-    }
-
-    if (isCargoValid) {
-        System.out.println("Cargo Code is VALID");
-    } else {
-        System.out.println("Cargo Code is INVALID");
+        System.out.println("Safety violation detected!");
     }
 
     System.out.println();
-    System.out.println("UC11 validation completed...");
+    System.out.println("UC12 safety compliance completed...");
     }
 }
